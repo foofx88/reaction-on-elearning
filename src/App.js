@@ -1,6 +1,10 @@
+import MainNavi from './components/layout/layout';
+
 
 function App() {
- return <div>Hi!</div>
+ return <MainNavi>
+ <div>Hi!</div>
+ </MainNavi>
 }
 
 export default App;
