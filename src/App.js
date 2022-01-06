@@ -1,10 +1,12 @@
-import MainNavi from './components/layout/layout';
+import Laylay from "./components/layout/layout";
+
 
 
 function App() {
- return <MainNavi>
- <div>Hi!</div>
- </MainNavi>
+  return (
+    <Laylay />
+
+  );
 }
 
 export default App;
