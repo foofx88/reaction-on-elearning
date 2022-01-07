@@ -29,8 +29,8 @@ function MainNavi() {
           </Menu.Item>
         </SubMenu>
         <SubMenu key="data" icon={<LaptopOutlined />} title="Data">
-          <Menu.Item key="data.new">Add New Data</Menu.Item>
-          <Menu.Item key="data.table">View Existing Data</Menu.Item>
+          <Menu.Item key="data.new"><Link to="/newdata">Add New Data</Link></Menu.Item>
+          <Menu.Item key="data.table"><Link to ="/table">View Existing Data</Link></Menu.Item>
         </SubMenu>
       </Menu>
     </Sider>

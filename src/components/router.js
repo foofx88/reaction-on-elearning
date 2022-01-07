@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import Bar from "./pages/Bar";
 import Pie from "./pages/Pie";
 import Scatter from "./pages/Scatter";
@@ -9,7 +9,6 @@ import Main from "./pages/Main";
 
 function Router () {
 return (
-<BrowserRouter>
         <Routes>
         <Route exact path="/" element={<Main />} />
 
@@ -26,7 +25,6 @@ return (
         <Route path="*" element={<Main />}/>
 
         </Routes>
-        </BrowserRouter>
 );
 }
 
