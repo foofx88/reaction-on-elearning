@@ -1,14 +1,9 @@
 
-import { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect} from "react";
 
-const Context = createContext( {rawdata: []})
-
-export function GetData (props) {
+export function GetData () {
     const [loadingState, setLoadingState] = useState(true);
     const [loadedData, setLoadedData] = useState([]);
-    const value = loadedData;
-    
-
 
     useEffect(() => {
         setLoadingState(true);
@@ -37,11 +32,20 @@ export function GetData (props) {
     }
     else {}
 
-    
-    return <Context.Provider value={value}>
-        {props.children}
-    </Context.Provider>
+    const dataProcessing = () => {
+        let postBreakdownTemp = { helpful: 0, nice: 0, collaborative: 0 , confused: 0, creative: 0, bad: 0, amazing: 0}
+        let totalPostTemp = 0
+        let approvalRates = { pass: 0, fail: 0 }
+        
+        
+        
 
+    }
+    
+    React.useEffect(() => { dataProcessing()}, [loadedData])
+
+    
+    return <div>{console.log("Load Completed")}</div>
     
 }
 
