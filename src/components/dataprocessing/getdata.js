@@ -1,9 +1,11 @@
 
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, createContext } from "react";
 
 export function GetData () {
     const [loadingState, setLoadingState] = useState(true);
     const [loadedData, setLoadedData] = useState([]);
+    
+    const PassData = createContext();
 
     useEffect(() => {
         setLoadingState(true);
@@ -37,15 +39,18 @@ export function GetData () {
         let totalPostTemp = 0
         let approvalRates = { pass: 0, fail: 0 }
         
-        
-        
-
     }
     
     React.useEffect(() => { dataProcessing()}, [loadedData])
+    
+    const dataObj = {
+    
+    };
 
     
-    return <div>{console.log("Load Completed")}</div>
+    return <div>{console.log("Load Completed")}
+      <PassData.Provider value={dataObj}>{props.children}</PassData.Provider>
+</div>
     
 }
 
