@@ -1,10 +1,20 @@
-import { GetData, Context } from "../dataprocessing/getdata";
-import { useContext } from 'react';
+import GetData, { PassInput } from "../dataprocessing/getdata";
+import React, { useContext } from 'react';
 
 function Main () {
+    return <div>
+    <GetData>
+
+        
+<PassInput.Consumer>
+          {(data) => {
+            return {data};
+          }}
+        </PassInput.Consumer>
+        </GetData>
+    </div>
 
 
-    return <div>{<GetData />}</div>
 
 }
 
