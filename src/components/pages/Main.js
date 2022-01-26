@@ -1,21 +1,9 @@
-import GetData, { PassInput } from "../dataprocessing/getdata";
-import React, { useContext } from 'react';
+import { PassInput } from "../dataprocessing/getdata";
+import React, { useContext } from "react";
 
-function Main () {
-    return <div>
-    <GetData>
-
-        
-<PassInput.Consumer>
-          {(data) => {
-            return {data};
-          }}
-        </PassInput.Consumer>
-        </GetData>
-    </div>
-
-
-
+function Main() {
+  const data = useContext(PassInput);
+  return <div>This is the Main Page</div>;
 }
 
-export default Main; 
+export default Main;

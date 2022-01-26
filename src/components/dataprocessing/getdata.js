@@ -32,17 +32,10 @@ function GetData(props) {
   }
 
   const dataObj = {
-    loadedData: loadedData,
+    loadedData : loadedData
   };
 
-
-  return (
-    <div>
-      Loaded Data
-      <PassInput.Provider value={dataObj}>{loadedData}</PassInput.Provider>
-      {console.log(dataObj)}
-    </div>
-  );
+  return <PassInput.Provider value={dataObj}>{props.children}</PassInput.Provider>
 }
 
 export default GetData;

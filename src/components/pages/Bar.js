@@ -1,5 +1,5 @@
 function Bar () {
-return <div>Bar</div>
+return <div>Bar Graph</div>
 
 }
 
