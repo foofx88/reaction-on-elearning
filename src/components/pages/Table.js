@@ -5,11 +5,6 @@ import React, { useContext } from "react";
 function DataTable() {
   const data = useContext(PassInput);
   const tabledata = data.loadedData;
-  let tableitems = [];
-
-  for (let items of tabledata) {
-    tableitems.push(items);
-  }
 
   const columns = [
     {
@@ -96,7 +91,7 @@ function DataTable() {
     },
   ];
 
-  return <Table dataSource={tableitems} columns={columns} pagination={{ defaultPageSize: 50 }} scroll={{ y: 500 }} size="small" />;
+  return <Table dataSource={tabledata} columns={columns} pagination={{ defaultPageSize: 50 }} scroll={{ y: 500 }} size="small" />;
 }
 
 export default DataTable;
