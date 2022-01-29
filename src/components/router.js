@@ -1,6 +1,6 @@
 import { Routes, Route} from "react-router-dom";
 import BarChart from "./pages/Bar";
-import Pie from "./pages/Pie";
+import Donut from "./pages/Donut";
 import Scatter from "./pages/Scatter";
 import DataTable from "./pages/Table";
 import NewData from "./pages/NewData";
@@ -14,7 +14,7 @@ return (
 
         <Route exact path="/bar" element={<BarChart />}/>
 
-        <Route exact path="/pie" element={<Pie />}/>
+        <Route exact path="/donut" element={<Donut />}/>
 
         <Route exact path="/scatter" element={<Scatter />} />
 
@@ -28,4 +28,4 @@ return (
 );
 }
 
-export {BarChart, Pie, Scatter, DataTable, NewData, Main, Router};
+export {BarChart, Donut, Scatter, DataTable, NewData, Main, Router};

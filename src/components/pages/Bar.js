@@ -1,6 +1,6 @@
 import { Bar } from "@ant-design/plots";
-import { Select } from "antd";
-import React, { useContext, useState, useEffect } from "react";
+import { PageHeader, Select } from "antd";
+import React, { useContext, useState } from "react";
 import { PassInput } from "../dataprocessing/getdata";
 
 const { Option } = Select;
@@ -8,10 +8,9 @@ const { Option } = Select;
 function BarChart() {
   const input = useContext(PassInput);
   const bardata = input.loadedData;
-  const [student, selectedStudent] = useState("");
+  const [student, selectedStudent] = useState("All Students");
 
   let data = [];
-
   let amaz_count = 0;
   let bad_count = 0;
   let collab_count = 0;
@@ -33,19 +32,17 @@ function BarChart() {
   }
 
   for (let items of bardata) {
-    if ( items.id === student) {
-      countreaction(items)
-      console.log(student)
-      console.log(tot_count)
- 
+    if (student === "All Students") {
+      countreaction(items);
+    } else {
+      if (items.id === student) {
+        countreaction(items);
+      }
     }
-    else {
-      countreaction(items)
-    }
-
   }
 
   data.push(
+    { type: "Total Posted", count: tot_count },
     {
       type: "Amazing",
       count: amaz_count,
@@ -58,19 +55,23 @@ function BarChart() {
     { type: "Confused", count: conf_count },
     { type: "Creative", count: creat_count },
     { type: "Helpful", count: help_count },
-    { type: "Nice", count: nice_count },
-    { type: "Total Posted", count: tot_count }
+    { type: "Nice", count: nice_count }
   );
-
-  console.log(data)
 
   const barconfig = {
     data,
     xField: "count",
     yField: "type",
     seriesField: "type",
-  };
+    label: {
+      position: 'right',
+      style: {
+        fill: 'black',
+      }
 
+    }
+
+  };
 
   function handleChange(value) {
     selectedStudent(value);
@@ -81,22 +82,19 @@ function BarChart() {
     console.log("search:", val);
   }
 
-  React.useEffect(()=> {
-
-  }, [student]);
-
   let optionS = bardata.map((v) => <Option value={v.id}>{v.id}</Option>);
 
-
-  //include a selector with all student ID (with filters) and chart to show student's reactions on post
-  //default view set to all
   return (
     <div>
-      <h3>Reactions on Posts</h3>
-      <Select showSearch placeholder="All Students" style={{width: 200}}
-    optionFilterProp="children" defaultValue={"All Students"} onChange={handleChange} onSearch={onSearch} filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
-        {optionS}
-      </Select>
+      <PageHeader
+        title="Reactions Received on Posts"
+        extra={[
+          <Select showSearch placeholder="All Students" style={{ align: "right", width: 200 }} optionFilterProp="children" defaultValue={"All Students"} onChange={handleChange} onSearch={onSearch} filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+            <Option value="All Students">All Students</Option>
+            {optionS}
+          </Select>,
+        ]}
+      />
       <Bar {...barconfig} />
     </div>
   );
