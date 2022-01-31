@@ -62,7 +62,10 @@ function BarChart() {
     data,
     xField: "count",
     yField: "type",
+    colorField: 'type',
+    color:['#5B8FF9','#9270CA','#E8684A', '#269A99', '#5AD8A6', '#F6BD16', '#6DC8EC','#FF9D4D'],
     seriesField: "type",
+    tooltip: false,
     label: {
       position: 'right',
       style: {

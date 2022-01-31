@@ -53,7 +53,7 @@ function DataTable() {
       key: "nice_code_post",
     },
     {
-      title: "Time Spent Online(s)",
+      title: "Time Spent Online (S)",
       dataIndex: "timeonline",
       key: "timeonline",
       sorter: (a, b) => a.timeonline - b.timeonline,
@@ -65,27 +65,27 @@ function DataTable() {
       sorter: (a, b) => a.total_posts - b.total_posts,
     },
     {
-      title: "Critical Thinking and Problem Solving",
+      title: "SK1",
       dataIndex: "sk1_classroom",
       key: "sk1_classroom",
     },
     {
-      title: "Creativity and Innovation",
+      title: "SK2",
       dataIndex: "sk2_classroom",
       key: "sk2_classroom",
     },
     {
-      title: "Constant and Self Learning",
+      title: "SK3",
       dataIndex: "sk3_classroom",
       key: "sk3_classroom",
     },
     {
-      title: "Collaboration and Self-Direction",
+      title: "SK4",
       dataIndex: "sk4_classroom",
       key: "sk4_classroom",
     },
     {
-      title: "Social and Cultural Responsability",
+      title: "SK5",
       dataIndex: "sk5_classroom",
       key: "sk5_classroom",
     },

@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import ReactDOM from "react-dom";
 import { Pie, measureTextWidth } from "@ant-design/plots";
+import { PageHeader, Select } from "antd";
 import { PassInput } from "../dataprocessing/getdata";
+
+const { Option } = Select;
 
 function Donut() {
   const input = useContext(PassInput);
   const donutdata = input.loadedData;
   const [student, selectedStudent] = useState("All Students");
-
-  //this page to have donut chart showing the SK scores of students
-  // Statistics to perhaps show overall/average score
 
   let data = [];
   let count = 0
@@ -50,26 +49,20 @@ function Donut() {
   }
 
   data.push(
-    { type: "SK1 Score", count: sk1_count },
+    { type: "SK1 Score", count: sk1_count, full_name: "Critical Thinking and Problem Solving" },
     {
       type: "SK2 Score",
       count: sk2_count,
+      full_name: "Creativity and Innovation"
     },
     {
       type: "SK3 Score",
       count: sk3_count,
+      full_name: "Constant and Self Learning"
     },
-    { type: "SK4 Score", count: sk4_count },
-    { type: "SK5 Score", count: sk5_count },
+    { type: "SK4 Score", count: sk4_count, full_name: "Collaboration and Self-Direction" },
+    { type: "SK5 Score", count: sk5_count, full_name:  "Social and Cultural Responsibility"},
   );
-
-// to do - create custom legend to show the following corresponding to the SK scores
-// "Critical Thinking and Problem Solving"
-// "Creativity and Innovation"
-// "Constant and Self Learning"
-// "Collaboration and Self-Direction"
-// "Social and Cultural Responsibility"
-
 
   console.log(data)
 
@@ -88,10 +81,11 @@ function Donut() {
   }
 
   const config = {
-    appendPadding: 10,
+    appendPadding: 15,
     data,
     angleField: 'count',
-    colorField: 'type',
+    colorField: 'full_name',
+    color:['#6DC8EC','#F6BD16','#269A99','#9270CA', '#E8684A'],
     radius: 1,
     innerRadius: 0.6,
     meta: {
@@ -103,10 +97,11 @@ function Donut() {
       type: 'inner',
       offset: '-50%',
       style: {
+        fontSize: 18,
         textAlign: 'center',
       },
       autoRotate: false,
-      content: '{value}',
+      content: '{value}' ,
     },
     statistic: {
       title: {
@@ -115,20 +110,20 @@ function Donut() {
         customHtml: (container, view, datum) => {
           const { width, height } = container.getBoundingClientRect();
           const d = Math.sqrt(Math.pow(width / 2, 2) + Math.pow(height / 2, 2));
-          const text = datum ? datum.type : 'Total Avg Score';
+          const text = datum ? datum.type : 'Total Score';
           return renderStatistic(d, text, {
-            fontSize: 24,
+            fontSize: 30,
           });
         },
       },
       content: {
         offsetY: 20,
         style: {
-          fontSize: '24px',
+          fontSize: 26,
         },
         customHtml: (container, view, datum, data) => {
           const { width } = container.getBoundingClientRect();
-          const text = datum ? `${datum.count}` : `${data.reduce((r, d) => r + d.count, 0)}`;
+          const text = datum ? `${datum.count}` : `${(data.reduce((r, d) => r + d.count, 0)).toFixed(2)}`;
           return renderStatistic(width, text, {
             fontSize: 24,
           });
@@ -145,13 +140,43 @@ function Donut() {
       {
         type: 'pie-statistic-active',
       },
+      {
+        type: 'pie-legend-active',
+      },
     ],
     legend: {
+      offsetX: 50,
+      offsetY: 10,
+      layout: 'horizontal',
         position: 'bottom'
     }
   };
 
-  return <Pie {...config} />;
+  function handleChange(value) {
+    selectedStudent(value);
+    console.log(`Selected: ${value}`);
+  }
+
+  function onSearch(val) {
+    console.log("search:", val);
+  }
+
+  let optionS = donutdata.map((v) => <Option value={v.id}>{v.id}</Option>);
+
+  return (
+  <div>
+  <PageHeader
+    title="Evaluation on Skills"
+    extra={[
+      <Select showSearch placeholder="All Students" style={{ align: "right", width: 200 }} optionFilterProp="children" defaultValue={"All Students"} onChange={handleChange} onSearch={onSearch} filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+        <Option value="All Students">All Students</Option>
+        {optionS}
+      </Select>,
+    ]}
+  />
+  <Pie {...config} />
+  </div>
+  );
 }
 
 export default Donut;
