@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/roe/static/css/main.d4b118e9.css",
+    "main.js": "/roe/static/js/main.8dbac6b6.js",
+    "index.html": "/roe/index.html",
+    "main.d4b118e9.css.map": "/roe/static/css/main.d4b118e9.css.map",
+    "main.8dbac6b6.js.map": "/roe/static/js/main.8dbac6b6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4b118e9.css",
+    "static/js/main.8dbac6b6.js"
+  ]
+}

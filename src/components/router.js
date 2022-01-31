@@ -10,17 +10,17 @@ import Main from "./pages/Main";
 function Router () {
 return (
         <Routes>
-        <Route exact path="/" element={<Main />} />
+        <Route exact path="/roe" element={<Main />} />
 
-        <Route exact path="/bar" element={<BarChart />}/>
+        <Route exact path="/roe/bar" element={<BarChart />}/>
 
-        <Route exact path="/donut" element={<Donut />}/>
+        <Route exact path="/roe/donut" element={<Donut />}/>
 
-        <Route exact path="/scatter" element={<Scatter />} />
+        <Route exact path="/roe/scatter" element={<Scatter />} />
 
-        <Route exact path="/newdata" element={<NewData />} />
+        <Route exact path="/roe/newdata" element={<NewData />} />
 
-        <Route exact path="/table" element={<DataTable/>} />
+        <Route exact path="/roe/table" element={<DataTable/>} />
 
         <Route path="*" element={<Main />}/>
 
