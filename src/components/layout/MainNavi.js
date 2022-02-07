@@ -26,9 +26,6 @@ function MainNavi() {
           </Menu.Item>
         </SubMenu>
         <SubMenu key="data" icon={<LaptopOutlined />} title="Data">
-          <Menu.Item key="data.new">
-            <Link to="/roe/newdata">Add New Data</Link>
-          </Menu.Item>
           <Menu.Item key="data.table">
             <Link to="/roe/table">View Existing Data</Link>
           </Menu.Item>

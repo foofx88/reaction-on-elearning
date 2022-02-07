@@ -3,7 +3,6 @@ import BarChart from "./pages/Bar";
 import Donut from "./pages/Donut";
 import ScatterPlot from "./pages/Scatter";
 import DataTable from "./pages/Table";
-import NewData from "./pages/NewData";
 import Main from "./pages/Main";
 
 
@@ -18,8 +17,6 @@ return (
 
         <Route exact path="/roe/scatter" element={<ScatterPlot />} />
 
-        <Route exact path="/roe/newdata" element={<NewData />} />
-
         <Route exact path="/roe/table" element={<DataTable/>} />
 
         <Route path="*" element={<Main />}/>
@@ -28,4 +25,4 @@ return (
 );
 }
 
-export {BarChart, Donut, ScatterPlot, DataTable, NewData, Main, Router};
+export {BarChart, Donut, ScatterPlot, DataTable, Main, Router};
