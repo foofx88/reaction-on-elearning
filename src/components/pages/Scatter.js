@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, {useContext } from 'react';
 import { Scatter } from '@ant-design/plots';
-import { PageHeader, Select } from "antd";
+import { PageHeader} from "antd";
 import { PassInput } from "../dataprocessing/getdata";
 
 function ScatterPlot () {
@@ -14,25 +14,17 @@ function ScatterPlot () {
         data.push(items)
 
     }
-// data structure to look like this:
-// [
-//     {
-//         "Student": "id",
-//         "Pass/Fail":"Approved",
-//         "TSO": "time_spent_online",
-//         "Total Posts":"total_post"
-//     }
-// ]
 
 const config = {
     appendPadding: 10,
     data,
     xField: 'timeonline',
     yField: 'total_posts',
+    size:5,
     shape: 'circle',
     colorField: 'Approved',
+    sizeField:'id',
     color: ['#E8684A', '#61DDAA'],
-    size: 5,
     yAxis: {
       nice: true,
       line: {
@@ -62,7 +54,13 @@ const config = {
             stroke:'#a8190d'
         },
       },
-    //to do: make a custom tooltip 
+      tooltip: {
+        showTitle: true,
+        title: "id",
+        formatter: (data) => {
+          return {name: "Time Spent Online", value: data.timeonline};
+        },
+      }
   };
 
     return (
