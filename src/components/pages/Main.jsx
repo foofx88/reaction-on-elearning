@@ -1,8 +1,10 @@
+
 import LiquidPlot from "./Liquid";
 
 function Main() {
 
-  return <LiquidPlot />;
+  return (<div><LiquidPlot /></div>
+  );
 }
 
 export default Main;

@@ -1,6 +1,5 @@
 import React, {useState, useContext } from 'react';
 import { Liquid } from '@ant-design/plots';
-import { PageHeader} from "antd";
 import { PassInput } from "../dataprocessing/getdata";
 
 function LiquidPlot () {
@@ -9,10 +8,12 @@ function LiquidPlot () {
     
     let data = [];
 
-    console.log(data)
+  
     for (let items of liquiddata){
+
         data.push(items)
     }
+    console.log(data)
 
     function calcpassrates (data) {
         let count = 0;
@@ -47,7 +48,7 @@ const config = {
         },
 
   };
-
+ console.log(liquiddata)
     return (
         <div>
       <Liquid {...config }/>
