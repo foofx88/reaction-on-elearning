@@ -5,7 +5,7 @@ import { PassInput } from "../dataprocessing/getdata";
 
 const { Option } = Select;
 
-function Donut() {
+export default function Donut() {
   const input = useContext(PassInput);
   const donutdata = input.loadedData;
   const [student, selectedStudent] = useState("All Students");
@@ -179,4 +179,3 @@ function Donut() {
   );
 }
 
-export default Donut;

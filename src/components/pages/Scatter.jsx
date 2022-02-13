@@ -3,7 +3,7 @@ import { Scatter } from '@ant-design/plots';
 import { PageHeader} from "antd";
 import { PassInput } from "../dataprocessing/getdata";
 
-function ScatterPlot () {
+export default function ScatterPlot () {
     const input = useContext(PassInput);
     const scatterdata = input.loadedData;
     
@@ -26,6 +26,9 @@ const config = {
     sizeField:'id',
     color: ['#E8684A', '#61DDAA'],
     yAxis: {
+      title: {
+        text:"Total Posts"
+      },
       nice: true,
       line: {
         style: {
@@ -34,6 +37,9 @@ const config = {
       },
     },
     xAxis: {
+      title: {
+        text:"Time Spent Online (S)"
+      },
       min: -100,
       grid: {
         line: {
@@ -72,5 +78,3 @@ const config = {
     
    
 }
-
-export default ScatterPlot;

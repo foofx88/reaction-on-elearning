@@ -10,7 +10,6 @@ function Laylay() {
     <Layout style={{ minHeight: "100vh" }}>
       <MainNavi />
       <Layout style={{ padding: "0 24px 24px" }}>
-        <Header className="siteLayoutBackground" style={{ padding: 0 }} />
         <Content
           className="siteLayoutBackground"
           style={{

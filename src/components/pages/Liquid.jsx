@@ -1,6 +1,7 @@
-import React, {useState, useContext } from 'react';
+import React, {useContext } from 'react';
 import { Liquid } from '@ant-design/plots';
 import { PassInput } from "../dataprocessing/getdata";
+import { PageHeader} from "antd";
 
 function LiquidPlot () {
     const input = useContext(PassInput);
@@ -51,6 +52,7 @@ const config = {
  console.log(liquiddata)
     return (
         <div>
+              <PageHeader title="Student Pass Rate" />
       <Liquid {...config }/>
       </div>
     );

@@ -7,6 +7,9 @@
   margin: 16px 24px 16px 0;
   background: rgba(255, 255, 255, 0.3);
 }
+.ant-menu.ant-menu-dark {
+  background: rgb(0, 0, 65);
+}
 
 .ant-row-rtl .logo {
   float: right;

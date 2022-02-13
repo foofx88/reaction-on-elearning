@@ -4,7 +4,28 @@ import React, { useContext } from "react";
 
 function DataTable() {
   const data = useContext(PassInput);
-  const tabledata = data.loadedData;
+  const tabledata = [];
+
+  function sToTime(timespent) {
+    let seconds = Math.floor((timespent / 1) % 60),
+      minutes = Math.floor((timespent / (1 * 60)) % 60),
+      hours = Math.floor((timespent / (1 * 60 * 60)) % 24);
+
+    return (
+      (hours < 10 ? "0" + hours : hours) +
+      ":" +
+      (minutes < 10 ? "0" + minutes : minutes) +
+      ":" +
+      (seconds < 10 ? "0" + seconds : seconds)
+    );
+  }
+
+
+  for (let items of data.loadedData){
+    items.timeonline = sToTime(items.timeonline)
+    tabledata.push(items)
+
+}
 
   const columns = [
     {
@@ -53,10 +74,10 @@ function DataTable() {
       key: "nice_code_post",
     },
     {
-      title: "Time Spent Online (S)",
+      title: "Time Spent Online (HH:MM:SS)",
       dataIndex: "timeonline",
       key: "timeonline",
-      sorter: (a, b) => a.timeonline - b.timeonline,
+      sorter: (a, b) => a.timeonline.localeCompare(b.timeonline),
     },
     {
       title: "Total Posts",

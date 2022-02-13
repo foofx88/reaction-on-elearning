@@ -14,20 +14,20 @@ function MainNavi() {
           <Link to="/roe">REACT on E-Learning</Link>
         </Menu.Item>
 
-        <SubMenu key="viz" icon={<UserOutlined />} title="Visualizations">
+        <SubMenu key="viz" icon={<UserOutlined />} title="Analysis">
           <Menu.Item key="viz.bar">
-            <Link to="/roe/bar">Bar Chart</Link>
+            <Link to="/roe/bar">Posts Reaction</Link>
           </Menu.Item>
           <Menu.Item key="viz.scatter">
-            <Link to="/roe/scatter">Scatter Plot</Link>
+            <Link to="/roe/scatter">Time Spent Online</Link>
           </Menu.Item>
           <Menu.Item key="viz.pie">
-            <Link to="/roe/donut">Donut Chart</Link>
+            <Link to="/roe/donut">Evaluation on Skills</Link>
           </Menu.Item>
         </SubMenu>
         <SubMenu key="data" icon={<LaptopOutlined />} title="Data">
           <Menu.Item key="data.table">
-            <Link to="/roe/table">View Existing Data</Link>
+            <Link to="/roe/table">View Student's Data</Link>
           </Menu.Item>
         </SubMenu>
       </Menu>

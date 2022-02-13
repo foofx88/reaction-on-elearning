@@ -1,5 +1,9 @@
-.main {
-    margin: 3rem auto;
-    width: 90%;
-    max-width: 40rem;
+.siteLayoutBackground {
+    margin: 0rem auto;
+    width: 100%;
+    max-width: 120rem;
+  }
+
+  .ant-layout {
+    background: rgba(110, 111, 117, 0.678) !important;
   }
