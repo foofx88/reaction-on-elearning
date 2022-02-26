@@ -1,11 +1,15 @@
 import { Table } from "antd";
 import { PassInput } from "../dataprocessing/getdata";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect} from "react";
 
 function DataTable() {
   const data = useContext(PassInput);
-  const tabledata = [];
+  const tdata = data.loadedData
+  const [tableData, setTableData] = useState([]);
+  const temptabledata = [];
+  const timedata = [];
 
+  const getRecords = () => {
   function sToTime(timespent) {
     let seconds = Math.floor((timespent / 1) % 60),
       minutes = Math.floor((timespent / (1 * 60)) % 60),
@@ -20,10 +24,16 @@ function DataTable() {
     );
   }
 
+  for (let items of tdata){
+    let obj = {}
+    let ConvertedTime = sToTime(items.timeonline)
+    obj = items
+    obj['convertedtime'] = ConvertedTime
+    temptabledata.push(obj)
+  
+}
 
-  for (let items of data.loadedData){
-    items.timeonline = sToTime(items.timeonline)
-    tabledata.push(items)
+setTableData(temptabledata)
 
 }
 
@@ -75,9 +85,9 @@ function DataTable() {
     },
     {
       title: "Time Spent Online (HH:MM:SS)",
-      dataIndex: "timeonline",
-      key: "timeonline",
-      sorter: (a, b) => a.timeonline.localeCompare(b.timeonline),
+      dataIndex: "convertedtime",
+      key: "convertedtime",
+      sorter: (a, b) => a.convertedtime.localeCompare(b.convertedtime),
     },
     {
       title: "Total Posts",
@@ -112,7 +122,12 @@ function DataTable() {
     },
   ];
 
-  return <Table dataSource={tabledata} columns={columns} pagination={{ defaultPageSize: 50 }} scroll={{ y: 500 }} size="small" />;
+  useEffect(() => {
+    
+    getRecords();
+  }, [tdata]);
+
+  return <Table dataSource={tableData} columns={columns} pagination={{ defaultPageSize: 50 }} scroll={{ y: 500 }} size="small" />;
 }
 
 export default DataTable;

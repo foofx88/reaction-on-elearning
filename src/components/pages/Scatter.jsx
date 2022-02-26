@@ -6,12 +6,13 @@ import { PassInput } from "../dataprocessing/getdata";
 export default function ScatterPlot () {
     const input = useContext(PassInput);
     const scatterdata = input.loadedData;
-    
-    let data = [];
+    const data = [];
 
-    console.log(data)
     for (let items of scatterdata){
-        data.push(items)
+      console.log(items)
+        data.push({
+          id: items.id, timeonline: items.timeonline, totalposts: items.total_posts, approved: items.Approved
+        })
 
     }
 
@@ -19,10 +20,10 @@ const config = {
     appendPadding: 10,
     data,
     xField: 'timeonline',
-    yField: 'total_posts',
+    yField: 'totalposts',
     size:5,
     shape: 'circle',
-    colorField: 'Approved',
+    colorField: 'approved',
     sizeField:'id',
     color: ['#E8684A', '#61DDAA'],
     yAxis: {

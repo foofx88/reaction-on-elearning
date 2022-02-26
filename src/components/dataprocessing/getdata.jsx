@@ -73,9 +73,7 @@ useEffect(() => {
   const dataObj = {
     loadedData: loadedData,
   };
-
-  console.log(loadedData);
-
+  console.log(dataObj)
   return <PassInput.Provider value={dataObj}>{props.children}</PassInput.Provider>;
 }
 
