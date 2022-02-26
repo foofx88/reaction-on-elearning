@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/reaction-on-elearning/static/css/main.4407c0df.css",
+    "main.js": "/reaction-on-elearning/static/js/main.f26d8fd2.js",
+    "index.html": "/reaction-on-elearning/index.html",
+    "main.4407c0df.css.map": "/reaction-on-elearning/static/css/main.4407c0df.css.map",
+    "main.f26d8fd2.js.map": "/reaction-on-elearning/static/js/main.f26d8fd2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4407c0df.css",
+    "static/js/main.f26d8fd2.js"
+  ]
+}
